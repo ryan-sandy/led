@@ -1,0 +1,21 @@
+#ssl_certificate /etc/nginx/ssl/server.crt;
+#ssl_certificate_key /etc/nginx/ssl/server.key;
+
+# the nginx server instance
+server {
+  listen 80;
+  server_name led.ryansandy.is-a-geek.com;
+  access_log /var/log/nginx/led.access.log;
+  error_log /var/log/nginx/led.error.log;
+
+  root /home/sandyman/programming/led/public;
+  index index.html;
+  # pass the request to the node.js server with the correct headers and much more can be added, see nginx config options
+  location / {
+    proxy_pass http://localhost:8880;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+  }
+}

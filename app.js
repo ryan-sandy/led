@@ -14,7 +14,7 @@ var five = require("johnny-five");
 var Hapi = require('hapi');
 
 var board = new five.Board();
-var server = Hapi.createServer(8080);
+var server = Hapi.createServer('localhost',8880);
 
 var set = function (r, g, b) {
   console.log('setting rgb(' + r + ', ' + g + ', ' + b + ')');
@@ -80,6 +80,6 @@ board.on('ready', function () {
       process.exit();
     }
   });
-  server.start();
 });
 
+server.start();
