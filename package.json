@@ -1,0 +1,9 @@
+{
+  "name" : "Johnny-LED",
+  "description" : "A simple LED tutorail using Johnny Five",
+  "version" : "0.0.1",
+  "private" : true,
+  "dependencies": {
+    "johnny-five" : "x"
+  }
+}
